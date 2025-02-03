@@ -4,8 +4,8 @@ import { List, Datagrid, TextField, ReferenceField,DeleteButton } from "react-ad
 const TestimonialsList = () => (
   <List>
     <Datagrid>
-      <ReferenceField source="userId" reference="users" />
-      <TextField source="id" />
+   {/*    <ReferenceField source="userId" reference="users" />
+      <TextField source="id" /> */}
       <TextField source="author" />
       <TextField source="quote" />
       <TextField source="position" />
