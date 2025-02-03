@@ -1,14 +1,14 @@
 // components/HeroList.js
 import React from "react";
-import { List, Datagrid, TextInput, DeleteButton } from "react-admin";
+import { List, Datagrid, TextField, DeleteButton } from "react-admin";
 
 const HeroList = (props) => (
   <List {...props}>
     <Datagrid>
-      <TextInput label="Title" source="title" />
-      <TextInput label="Text" source="text" />
-      <TextInput label="ButtonL" source="ButtonL" />
-      <TextInput label="ButtonR" source="ButtonR" />
+      <TextField label="TitleHero" source="titleHero" />
+      <TextField label="TextHero" source="textHero" />
+      <TextField label="ButtonL" source="buttonL" />
+      <TextField label="ButtonR" source="buttonR" />
       <DeleteButton label="Delete" />
     </Datagrid>
   </List>

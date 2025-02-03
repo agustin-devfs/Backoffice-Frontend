@@ -6,7 +6,7 @@ import UserList from "./components/UserList";
 import UserCreate from "./components/UserCreate";
 import UserEdit from "./components/UserEdit";
 //cards
-import CardList from "./cards";
+import CardList from "./components/CardsList";
 import CardCreate from "./components/CardsCreate";
 import CardEdit from "./components/CardsEdit";
 //testimonials
@@ -26,6 +26,8 @@ const App = () => (
       create={UserCreate}
       edit={UserEdit}
     />
+    <Resource name="hero" list={HeroList} create={HeroCreate} edit={HeroEdit} />
+  
     <Resource
       name="cards"
       list={CardList}
@@ -38,7 +40,6 @@ const App = () => (
       create={TestimonialCreate}
       edit={TestimonialEdit}
     />
-    <Resource name="hero" list={HeroList} create={HeroCreate} edit={HeroEdit} />
   </Admin>
 );
 

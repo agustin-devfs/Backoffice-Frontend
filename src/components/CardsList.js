@@ -1,8 +1,8 @@
 // in src/cards.js
-import { List, Datagrid, TextField, ReferenceField } from "react-admin";
+import { List, Datagrid, TextField, ReferenceField, DeleteButton } from "react-admin";
 
-const CardsList = () => (
-  <List>
+const CardsList = (props) => (
+  <List {...props}>
     <Datagrid>
       <ReferenceField source="userId" reference="users" />
       <TextField source="id" />
@@ -10,6 +10,7 @@ const CardsList = () => (
       <TextField source="description" />
       <TextField label="ImageSrc" source="imageSrc" />
       <TextField label="ImageAlt" source="imageAlt" />
+      <DeleteButton label="Delete" />
     </Datagrid>
   </List>
 );

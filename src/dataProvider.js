@@ -1,76 +1,100 @@
 const dataProvider = {
-    getList: async (resource, params) => {
-        // Asegúrate de que 'resource' tenga el valor correcto, por ejemplo, "users"
-        const response = await fetch(`http://localhost:5000/api/${resource}`);
-        const json = await response.json();
+  getList: async (resource, params) => {
+    const response = await fetch(`http://localhost:5000/api/${resource}`);
+    const json = await response.json();
+    const data = json.data || [];
 
-        // Asegurarse de acceder a "json.data"
-        const data = json.data || [];  // Usa json.data si existe, sino un array vacío.
+    return {
+      data: data.map((item) => ({ id: item._id, ...item })),
+      total: json.total || data.length,
+    };
+  },
+  getMany: async (resource, params) => {
+    const response = await fetch(`http://localhost:5000/api/${resource}`);
+    const json = await response.json();
+    const data = json.data || [];
 
-        return {
-            data: data.map(item => ({ id: item._id, ...item })), // Asegura que cada objeto tiene "id"
-            total: json.total || data.length // Total se obtiene de json.total
-        };
-    },
-   getMany: async (resource, params) => {
-        const response = await fetch(`http://localhost:5000/api/${resource}`);
-        const json = await response.json();
+    return {
+      data: data.map((item) => ({ id: item._id, ...item })),
+    };
+  },
+  getOne: async (resource, params) => {
+    const response = await fetch(
+      `http://localhost:5000/api/${resource}/${params.id}`
+    );
+    const json = await response.json();
+    return {
+      data: { id: json.id, ...json },
+    };
+  },
 
-        // Accede a "json.data" si existe
-        const data = json.data || [];
+  create: async (resource, params) => {
+    const response = await fetch(`http://localhost:5000/api/${resource}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(params.data),
+    });
 
-        return {
-            data: data.map(item => ({ id: item._id, ...item }))
-        };
-    } ,
-     
-        getOne: async (resource, params) => {
-          const response = await fetch(`http://localhost:5000/api/${resource}/${params.id}`);
-          const json = await response.json();
-          return {
-            data: { id: json.id, ...json },
-          };
+    const json = await response.json();
+    console.log("Response JSON:", json);
+
+    if (!json.data || !json.data.id) {
+      throw new Error("Invalid response format: Missing 'data' or 'id'");
+    }
+
+    return {
+      data: { id: json.data.id, ...json.data },
+    };
+  },
+
+  update: async (resource, params) => {
+    const response = await fetch(
+      `http://localhost:5000/api/${resource}/${params.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
         },
-      
-        create: async (resource, params) => {
-          const response = await fetch(`http://localhost:5000/api/${resource}`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(params.data),
-          });
-          const json = await response.json();
-          return {
-            data: { id: json.data.id, ...json.data },
-          };
+        body: JSON.stringify(params.data),
+      }
+    );
+    const json = await response.json();
+    return {
+      data: { id: json.data.id, ...json.data },
+    };
+  },
+  delete: async (resource, params) => {
+    const response = await fetch(
+      `http://localhost:5000/api/${resource}/${params.id}`,
+      {
+        method: "DELETE",
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Error deleting user");
+    }
+    const json = await response.json();
+    return { data: json.data };
+  },
+  deleteMany: async (resource, params) => {
+    const response = await fetch(
+      `http://localhost:5000/api/${resource}/bulk-delete`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      
-        update: async (resource, params) => {
-          const response = await fetch(`http://localhost:5000/api/${resource}/${params.id}`, {
-            method: 'PUT',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(params.data),
-          });
-          const json = await response.json();
-          return {
-            data: { id: json.data.id, ...json.data },
-          };
-        },
-      
-        delete: async (resource, params) => {
-          const response = await fetch(`http://localhost:5000/api/${resource}/${params.id}`, {
-            method: "DELETE",
-          });
-          if (!response.ok) {
-            throw new Error("Error deleting user");
-          }
-          const json = await response.json();
-          return { data: json.data }; // Retorna el usuario eliminado
-        },
+        body: JSON.stringify({ ids: params.ids }),
+      }
+    );
+    if (!response.ok) {
+      throw new Error("Error deleting multiple items");
+    }
+    const json = await response.json();
+    return { data: params.ids };
+  },
 };
 
 export default dataProvider;
-

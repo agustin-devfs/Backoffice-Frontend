@@ -4,10 +4,10 @@ import { Edit, SimpleForm, TextInput } from "react-admin";
 const HeroEdit = (props) => (
   <Edit {...props}>
     <SimpleForm>
-      <TextInput label="Title" source="title" />
-      <TextInput label="Text" source="text" />
-      <TextInput label="ButtonL" source="ButtonL" />
-      <TextInput label="ButtonR" source="ButtonR" />
+      <TextInput label="Title Hero" source="titleHero" />
+      <TextInput label="Text Hero" source="textHero" />
+      <TextInput label="Button Left" source="buttonL" />
+      <TextInput label="Button Rigth" source="buttonR" />
     </SimpleForm>
   </Edit>
 );

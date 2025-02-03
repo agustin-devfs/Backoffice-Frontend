@@ -1,5 +1,5 @@
 // in src/Testimonials.js
-import { List, Datagrid, TextField, ReferenceField } from "react-admin";
+import { List, Datagrid, TextField, ReferenceField,DeleteButton } from "react-admin";
 
 const TestimonialsList = () => (
   <List>
@@ -9,6 +9,7 @@ const TestimonialsList = () => (
       <TextField source="author" />
       <TextField source="quote" />
       <TextField source="position" />
+      <DeleteButton label="Delete" />
     </Datagrid>
   </List>
 );

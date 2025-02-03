@@ -3,10 +3,10 @@ import { SimpleForm, TextInput } from "react-admin";
 
 const HeroForm = () => (
   <SimpleForm>
-    <TextInput label="Title" source="title" />
-    <TextInput label="Text" source="text" />
-    <TextInput label="ButtonL" source="ButtonL" />
-    <TextInput label="ButtonR" source="ButtonR" />
+    <TextInput label="TitleHero" source="titleHero" />
+    <TextInput label="TextHero" source="textHero" />
+    <TextInput label="ButtonL" source="buttonL" />
+    <TextInput label="ButtonR" source="buttonR" />
   </SimpleForm>
 );
 
