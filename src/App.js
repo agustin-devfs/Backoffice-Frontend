@@ -40,7 +40,7 @@ const App = () => (
     /> 
 
     {/* Nav */}
-    <Resource name="navs" list={NavList} create={NavCreate} edit={NavEdit} />
+    <Resource name="nav" list={NavList} create={NavCreate} edit={NavEdit} />
     {/* Hero */}
     <Resource name="hero" list={HeroList} create={HeroCreate} edit={HeroEdit} />
   

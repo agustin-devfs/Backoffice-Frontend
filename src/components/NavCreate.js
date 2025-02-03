@@ -4,8 +4,8 @@ import { Create, SimpleForm, TextInput } from "react-admin";
 const NavsCreate = (props) => (
   <Create {...props}>
     <SimpleForm>
-      <TextInput label="Title" source="nav" />
-      <TextInput label="Link" source="linkNav" />
+      <TextInput label="Title Navigation" source="nav" />
+      <TextInput label="Link to" source="linkNav" />
     </SimpleForm>
   </Create>
 );

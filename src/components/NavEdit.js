@@ -4,8 +4,8 @@ import { Edit, SimpleForm, TextInput } from "react-admin";
 const NavEdit = (props) => (
   <Edit {...props}>
     <SimpleForm>
-      <TextInput label="Title" source="nav" />
-      <TextInput label="Link" source="linkNav" />
+      <TextInput label="Title Navigation" source="nav" />
+      <TextInput label="Link to" source="linkNav" />
     </SimpleForm>
   </Edit>
 );

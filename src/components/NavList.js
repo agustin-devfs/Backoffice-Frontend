@@ -3,7 +3,6 @@ import {
   List,
   Datagrid,
   TextField,
-  ReferenceField,
   DeleteButton,
 } from "react-admin";
 
@@ -14,8 +13,8 @@ const NavList = (props) => (
        */}
       {/*       <TextField source="id" />
        */}{" "}
-      <TextInput label="Title" source="nav" />
-      <TextInput label="Link" source="linkNav" />
+      <TextField label="Title Navigation" source="nav" />
+      <TextField label="Link to" source="linkNav" />
       <DeleteButton label="Delete" />
     </Datagrid>
   </List>
