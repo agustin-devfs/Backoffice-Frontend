@@ -1,10 +1,5 @@
 // in src/Nav.js
-import {
-  List,
-  Datagrid,
-  TextField,
-  DeleteButton,
-} from "react-admin";
+import { List, Datagrid, TextField, DeleteButton } from "react-admin";
 
 const NavList = (props) => (
   <List {...props}>
@@ -15,6 +10,7 @@ const NavList = (props) => (
        */}{" "}
       <TextField label="Title Navigation" source="nav" />
       <TextField label="Link to" source="linkNav" />
+      <TextField label="Icon" source="iconNav" />
       <DeleteButton label="Delete" />
     </Datagrid>
   </List>

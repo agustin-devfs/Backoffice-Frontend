@@ -6,6 +6,7 @@ const NavsCreate = (props) => (
     <SimpleForm>
       <TextInput label="Title Navigation" source="nav" />
       <TextInput label="Link to" source="linkNav" />
+      <TextInput label="Icon" source="iconNav" />
     </SimpleForm>
   </Create>
 );

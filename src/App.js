@@ -19,6 +19,12 @@ import CardEdit from "./components/CardsEdit";
 import TestimonialList from "./components/TestimonialList";
 import TestimonialCreate from "./components/TestimonialsCreate";
 import TestimonialEdit from "./components/TestimonialsEdit";
+
+//events
+import EventsList from "./components/EventsList";
+import EventsCreate from "./components/EventsCreate";
+import EventsEdit from "./components/EventsEdit";
+
 //hero
 import HeroList from "./components/HeroList";
 import HeroEdit from "./components/HeroEdit";
@@ -37,13 +43,13 @@ const App = () => (
       list={UserList}
       create={UserCreate}
       edit={UserEdit}
-    /> 
+    />
 
     {/* Nav */}
     <Resource name="nav" list={NavList} create={NavCreate} edit={NavEdit} />
     {/* Hero */}
     <Resource name="hero" list={HeroList} create={HeroCreate} edit={HeroEdit} />
-  
+
     {/* Cards */}
     <Resource
       name="cards"
@@ -51,6 +57,14 @@ const App = () => (
       create={CardCreate}
       edit={CardEdit}
     />
+    {/* Events */}
+    <Resource
+      name="events"
+      list={EventsList}
+      create={EventsCreate}
+      edit={EventsEdit}
+    />
+
     {/* Testimonials */}
     <Resource
       name="testimonials"
@@ -58,13 +72,13 @@ const App = () => (
       create={TestimonialCreate}
       edit={TestimonialEdit}
     />
+    {/* Products */}
     <Resource
       name="Products"
       list={ProductsList}
       create={ProductsCreate}
       edit={ProductsEdit}
     />
-
   </Admin>
 );
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Create, SimpleForm, TextInput, NumberInput, SelectInput, ArrayInput, SimpleFormIterator } from "react-admin";
+import { Create, SimpleForm, TextInput, NumberInput, SelectInput, ImageInput, ImageField } from "react-admin";
 
 const ProductsCreate = (props) => (
   <Create {...props}>
@@ -18,11 +18,12 @@ const ProductsCreate = (props) => (
       />
       <NumberInput label="Stock" source="stock" />
       <TextInput label="Category" source="category" />
-      <ArrayInput label="Thumbnails" source="thumbnails">
-        <SimpleFormIterator>
-          <TextInput label="Image URL" />
-        </SimpleFormIterator>
-      </ArrayInput>
+
+      {/* Input para subir imágenes */}
+      <ImageInput source="thumbnails" label="Upload Images" multiple={true} accept="image/*">
+        <ImageField source="src" title="title" />
+      </ImageInput>
+
     </SimpleForm>
   </Create>
 );
