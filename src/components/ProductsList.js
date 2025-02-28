@@ -1,9 +1,18 @@
+// ProductList.js
 import React from "react";
-import { List, Datagrid, TextField, DeleteButton } from "react-admin";
+import {
+  List,
+  Datagrid,
+  TextField,
+  DeleteButton,
+  ArrayField,
+  SingleFieldList,
+  ImageField,
+} from "react-admin";
 
 const ProductsList = (props) => (
   <List {...props}>
-    <Datagrid>
+    <Datagrid rowClick="edit">
       <TextField source="id" />
       <TextField label="Title" source="title" />
       <TextField label="Description" source="description" />
@@ -12,8 +21,15 @@ const ProductsList = (props) => (
       <TextField label="Status" source="status" />
       <TextField label="Stock" source="stock" />
       <TextField label="Category" source="category" />
-      <TextField label="Thumbnails" source="thumbnails" />
-      <DeleteButton label="Delete" />
+
+      {/* Se asume que thumbnails es un array de objetos con 'src' y 'title' */}
+      <ArrayField source="thumbnails" label="Thumbnails">
+        <SingleFieldList>
+          <ImageField source="src" title="title" />
+        </SingleFieldList>
+      </ArrayField>
+
+      <DeleteButton />
     </Datagrid>
   </List>
 );
