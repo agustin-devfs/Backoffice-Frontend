@@ -1,5 +1,5 @@
 // CloudinaryImageInput.js
-import React, { useState } from "react";
+import React from "react";
 import { useInput, FieldTitle } from "react-admin";
 
 const CloudinaryImageInput = (props) => {

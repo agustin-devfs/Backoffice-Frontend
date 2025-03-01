@@ -1,5 +1,5 @@
 // in src/Testimonials.js
-import { List, Datagrid, TextField, ReferenceField,DeleteButton } from "react-admin";
+import { List, Datagrid, TextField, DeleteButton } from "react-admin";
 
 const TestimonialsList = () => (
   <List>
