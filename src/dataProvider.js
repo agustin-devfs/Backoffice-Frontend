@@ -1,4 +1,6 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL= "https://backoffice-backend-production-1380.up.railway.app/api"
+
+/* process.env.NEXT_PUBLIC_API_URL;*/
 
 // Función para convertir datos en FormData
 const convertDataToFormData = (data) => {
@@ -126,6 +128,8 @@ const dataProvider = {
     return { data: params.ids };
   },
 };
+
+console.log("API_URL:", API_URL);
 
 export default dataProvider;
 
